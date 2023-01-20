@@ -36,7 +36,7 @@ public class AddTestimonialHandler implements RequestHandler<RequestParameters, 
 
     public String handleRequest(RequestParameters requestParam, Context context) {
 
-        context.getLogger().log("Input: " + requestParam);
+        context.getLogger().log("Input in new lambda version: " + requestParam);
         try{
 
             return handleRequestMethods(testimonialService,requestParam, context.getLogger());

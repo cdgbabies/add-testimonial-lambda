@@ -5,6 +5,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import org.cdg.bean.Testimonial;
 
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -24,11 +25,9 @@ public class TestimonialService {
 
     public void createTestimonial(Testimonial reviewItem, LambdaLogger logger) {
         Map<String, AttributeValue> attributesMap = new HashMap<>();
-        UUID uuid = UUID.randomUUID();
-        logger.log("Inserting ID:==" + uuid);
 
-
-        attributesMap.put("pk", new AttributeValue(""));
+        attributesMap.put("pk", new AttributeValue("testimonials"));
+        attributesMap.put("sk", new AttributeValue(Instant.now().toString()));
         attributesMap.put("author", new AttributeValue(reviewItem.getAuthor()));
         attributesMap.put("testimonial", new AttributeValue(reviewItem.getTestimonial()));
         attributesMap.put("approved", new AttributeValue("N"));
