@@ -15,6 +15,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
     env:
       JAR_FILE_NAME: ${{ github.event.repository.name }}-1.0-SNAPSHOT.jar
 
